@@ -6,6 +6,8 @@ public class DnaVo {
     private char[][] DnaChain;
     private String dnaKey;
     private boolean dnaChainValid;
+    private int mutantToken;
+    private boolean isMutant;
 
     public DnaVo() {
     }
@@ -15,6 +17,31 @@ public class DnaVo {
         DnaChain = dnaChain;
         this.dnaKey = dnaKey;
         this.dnaChainValid = dnaChainValid;
+    }
+
+    public DnaVo(int lenghtChain, char[][] dnaChain, String dnaKey, boolean dnaChainValid, int mutantToken, boolean isMutant) {
+        LenghtChain = lenghtChain;
+        DnaChain = dnaChain;
+        this.dnaKey = dnaKey;
+        this.dnaChainValid = dnaChainValid;
+        this.mutantToken = mutantToken;
+        this.isMutant = isMutant;
+    }
+
+    public int getMutantToken() {
+        return mutantToken;
+    }
+
+    public void setMutantToken(int mutantToken) {
+        this.mutantToken = mutantToken;
+    }
+
+    public boolean getIsMutant() {
+        return isMutant;
+    }
+
+    public void setIsMutant(boolean isMutant) {
+        this.isMutant = isMutant;
     }
 
     public int getLenghtChain() {

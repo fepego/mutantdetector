@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 @Service
 public class DnaValidator implements DnaChainValidator {
-
+    private final int subTokenLength = 4;
     private static final Pattern DNA_CHARS_BASE_ELEMENTS = Pattern.compile("^[ACGT]*$");
     @Override
     public DnaVo VerifyDnaChainIsValid(String [] dnaChain) throws Exception {
@@ -27,6 +27,26 @@ public class DnaValidator implements DnaChainValidator {
         dnaVo.setDnaChain(dnaMatrix);
         dnaVo.setDnaKey(dnaIDKey.deleteCharAt(dnaIDKey.length()-1).toString());
         return dnaVo;
+    }
+
+    @Override
+    public int GetMutantSequenceCounter(String DnaToken) {
+        int mutantMatch = 0;
+        for(int i = 0; i< DnaToken.length(); i++) {
+            if(i+(subTokenLength) <= DnaToken.length()) {
+                if(mutantMatch(DnaToken.substring(i, i+subTokenLength))){
+                    mutantMatch ++;
+                }
+            } else {
+                return mutantMatch;
+            }
+
+        }
+        return mutantMatch;
+    }
+    public boolean mutantMatch(String dnaSubToken) {
+        String regexToken = String.format("(?:%s{%d})",dnaSubToken.charAt(0), subTokenLength);
+        return Pattern.matches(regexToken, dnaSubToken);
     }
 
     private boolean IsTokenWithCorrectLength(int length, String dnaToken) {

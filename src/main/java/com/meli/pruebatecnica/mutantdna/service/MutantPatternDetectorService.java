@@ -4,8 +4,6 @@ import com.meli.pruebatecnica.mutantdna.entity.DnaVo;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface DnaChainValidator {
-
-    DnaVo VerifyDnaChainIsValid(String[] dnaChain) throws Exception;
-    int GetMutantSequenceCounter(String DnaToken);
+public interface MutantPatternDetectorService {
+    public void DetectMutantPatternOnDnaMatrix(DnaVo DnaInput);
 }

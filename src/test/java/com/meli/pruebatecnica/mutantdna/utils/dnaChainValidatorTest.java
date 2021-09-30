@@ -61,4 +61,20 @@ public class dnaChainValidatorTest {
 
     }
 
+    @Test
+    final void GivenAMutantSubSequenceThenReturn2Matches() {
+        String dnaSubChain = "AAAATGTGGGGTGTGCTGCTGCTGCTGCTGC";
+        int expectedResult = 2;
+        int response = dnaInputValidator.GetMutantSequenceCounter(dnaSubChain);
+
+        assertEquals(expectedResult,response);
+    }
+    @Test
+    final void GivenANonMutantSubSequenceThenReturnCeroMatches() {
+        String dnaSubChain = "AAATTGTGCCG";
+        int expectedResult = 0;
+        int response = dnaInputValidator.GetMutantSequenceCounter(dnaSubChain);
+
+        assertEquals(expectedResult,response);
+    }
 }
