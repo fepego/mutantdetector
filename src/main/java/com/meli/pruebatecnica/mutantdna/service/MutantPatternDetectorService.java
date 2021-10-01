@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface MutantPatternDetectorService {
-    public void DetectMutantPatternOnDnaMatrix(DnaVo DnaInput);
+    public void DetectMutantPatternOnDnaMatrix(DnaVo dnaInput);
 }
