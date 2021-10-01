@@ -44,7 +44,7 @@ public class DnaValidator implements DnaChainValidator {
         }
         return mutantMatch;
     }
-    public boolean mutantMatch(String dnaSubToken) {
+    private boolean mutantMatch(String dnaSubToken) {
         String regexToken = String.format("(?:%s{%d})",dnaSubToken.charAt(0), subTokenLength);
         return Pattern.matches(regexToken, dnaSubToken);
     }

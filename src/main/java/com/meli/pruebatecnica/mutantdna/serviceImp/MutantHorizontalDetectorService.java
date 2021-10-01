@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MutantHorizontalDetector implements MutantPatternDetectorService {
+public class MutantHorizontalDetectorService implements MutantPatternDetectorService {
 
     @Autowired
     private DnaChainValidator dnaValidatorService;

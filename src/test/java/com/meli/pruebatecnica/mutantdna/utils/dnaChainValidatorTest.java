@@ -39,9 +39,9 @@ public class dnaChainValidatorTest {
      */
     @Test
     final void GivenCorrectDnaChainInStringArrayThenReturnDnaVO() throws  Exception {
-        char[] [] dnaMatrix = { {'A','T','G','C','G','A'}, {'C','A','G','T','G','C'} ,
-                {'T','T','A','T','G','T'}, {'A','G','A','A','G','G'}, {'C','C','C','C','T','A'},
-                {'T','C','A','C','T','G'}};
+        char[] [] dnaMatrix = { {'A','T','G','C','G','T'}, {'A','A','G','T','G','C'} ,
+                {'A','T','A','T','G','T'}, {'A','G','A','A','G','T'}, {'A','C','C','C','T','T'},
+                {'T','C','A','C','T','T'}};
         String dnaKey = "ATGCGA-CAGTGC-TTATGT-AGAAGG-CCCCTA-TCACTG";
 
         DnaVo serviceResponse= dnaInputValidator.VerifyDnaChainIsValid(correctDnaChain);
@@ -77,4 +77,6 @@ public class dnaChainValidatorTest {
 
         assertEquals(expectedResult,response);
     }
+
+    
 }
