@@ -38,7 +38,6 @@ public class MutantControllerTest {
     final String bodyMockParameter = "{\"dna\": [\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCATA\",\"TCACTG\"]}";
     final String ValidBodyMockParameter = "{\"dna\": [\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"TCACTG\"]}";
     @Test
-    @DisabledOnOs({OS.LINUX})
     public void WhenCallingMutantServiceWithValidDnaChainThenReturnHttpOk() throws Exception {
 
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/mutant")
