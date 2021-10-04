@@ -3,6 +3,8 @@ package com.meli.pruebatecnica.mutantdna.service;
 
 import org.json.JSONArray;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,7 @@ public class MutantControllerTest {
     final String bodyMockParameter = "{\"dna\": [\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCATA\",\"TCACTG\"]}";
     final String ValidBodyMockParameter = "{\"dna\": [\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"TCACTG\"]}";
     @Test
+    @EnabledOnOs({OS.WINDOWS, OS.MAC})
     public void WhenCallingMutantServiceWithValidDnaChainThenReturnHttpOk() throws Exception {
 
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/mutant")
@@ -44,6 +47,7 @@ public class MutantControllerTest {
                 .andExpect(status().isOk());
     }
     @Test
+    @EnabledOnOs({OS.WINDOWS, OS.MAC})
     public void WhenCallingMutantServiceWithNonValidChainThenReturnForbidden() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/mutant")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -55,6 +59,7 @@ public class MutantControllerTest {
     }
 
     @Test
+    @EnabledOnOs({OS.WINDOWS, OS.MAC})
     public void WhenCallingMutantServiceWithEmptyBodyThenReturnBadRequest() throws Exception {
        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/mutant")
                 .contentType(MediaType.APPLICATION_JSON)
