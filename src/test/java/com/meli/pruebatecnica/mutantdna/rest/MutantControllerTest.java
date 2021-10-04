@@ -37,9 +37,8 @@ public class MutantControllerTest {
     final String[] ValidMutantDnaChain = {"TTGCGA","CAATAC","TTATGT","AGAAGG","ACCCTA","TCACTG"};
     final String bodyMockParameter = "{\"dna\": [\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCATA\",\"TCACTG\"]}";
     final String ValidBodyMockParameter = "{\"dna\": [\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"TCACTG\"]}";
-
-
     @Test
+    @DisabledOnOs({OS.LINUX})
     public void WhenCallingMutantServiceWithValidDnaChainThenReturnHttpOk() throws Exception {
 
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/mutant")
@@ -51,6 +50,7 @@ public class MutantControllerTest {
                 .andExpect(status().isOk());
     }
     @Test
+    @DisabledOnOs({OS.LINUX})
     public void WhenCallingMutantServiceWithNonValidChainThenReturnForbidden() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/mutant")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -62,6 +62,7 @@ public class MutantControllerTest {
     }
 
     @Test
+    @DisabledOnOs({OS.LINUX})
     public void WhenCallingMutantServiceWithEmptyBodyThenReturnBadRequest() throws Exception {
        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/mutant")
                 .contentType(MediaType.APPLICATION_JSON)
