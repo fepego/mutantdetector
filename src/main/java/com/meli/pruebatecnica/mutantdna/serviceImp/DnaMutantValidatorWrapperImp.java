@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class DnaMutantValidatorWrapperImp implements DnaMutantValidatorWrapper {
 
@@ -53,9 +51,9 @@ public class DnaMutantValidatorWrapperImp implements DnaMutantValidatorWrapper {
     }
 
     private boolean GetDnaTestResultsFromDB(String dnaKey) {
-        List<DnaTest> result = mutantRegistryPersistenceService.findAll();
+        DnaTest result = mutantRegistryPersistenceService.findByDnaKey(dnaKey);
         if(result != null)
-            return true;
+            return result.isIsmutant();
         else return false;
     }
 
