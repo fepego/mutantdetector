@@ -78,5 +78,5 @@ public class dnaChainValidatorTest {
         assertEquals(expectedResult,response);
     }
 
-    
+
 }
