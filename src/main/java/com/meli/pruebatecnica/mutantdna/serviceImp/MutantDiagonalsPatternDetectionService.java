@@ -5,9 +5,10 @@ import com.meli.pruebatecnica.mutantdna.entity.MutantSequenceValidator;
 import com.meli.pruebatecnica.mutantdna.service.DnaMutantGnomeChainValidator;
 import com.meli.pruebatecnica.mutantdna.service.MutantPatternDetectorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("MutantDiagonalPatternDetectorService")
 public class MutantDiagonalsPatternDetectionService implements MutantPatternDetectorService {
 
 
@@ -21,7 +22,7 @@ public class MutantDiagonalsPatternDetectionService implements MutantPatternDete
     public void DetectMutantPatternOnDnaMatrix(DnaVo dnaInput) {
 
         int mainDiagonalsCounter = CheckMaxDiagonalsMutantSequence(dnaInput);
-        dnaInput.setMatchedMutantDnaTokens(mainDiagonalsCounter);
+        dnaInput.setMatchedMutantDnaTokens(dnaInput.getMatchedMutantDnaTokens() + mainDiagonalsCounter);
         if(mainDiagonalsCounter > 1) {
             dnaInput.setIsMutant(true);
             return;

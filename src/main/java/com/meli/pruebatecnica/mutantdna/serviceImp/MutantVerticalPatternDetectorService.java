@@ -4,9 +4,10 @@ import com.meli.pruebatecnica.mutantdna.entity.DnaVo;
 import com.meli.pruebatecnica.mutantdna.service.DnaChainValidator;
 import com.meli.pruebatecnica.mutantdna.service.MutantPatternDetectorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("MutantVerticalPatternDetectorService")
 public class MutantVerticalPatternDetectorService implements MutantPatternDetectorService {
 
     @Autowired
@@ -36,7 +37,7 @@ public class MutantVerticalPatternDetectorService implements MutantPatternDetect
             }
         }
         dnaInput.setIsMutant(mutantMatchSequence > 1);
-        dnaInput.setMatchedMutantDnaTokens(mutantMatchSequence);
+        dnaInput.setMatchedMutantDnaTokens(dnaInput.getMatchedMutantDnaTokens() + mutantMatchSequence);
         return;
     }
 }

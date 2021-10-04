@@ -1,6 +1,7 @@
 package com.meli.pruebatecnica.mutantdna.utils;
 
 import com.meli.pruebatecnica.mutantdna.entity.DnaVo;
+import com.meli.pruebatecnica.mutantdna.exception.InputDnaChainException;
 import com.meli.pruebatecnica.mutantdna.service.DnaChainValidator;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import org.junit.jupiter.api.BeforeEach;
@@ -55,9 +56,9 @@ public class dnaChainValidatorTest {
     @Test
     final void GivenWrongDnaChainInStringWithDiffAllowedCharsThenThorowException() throws Exception {
 
-        assertThatExceptionOfType(Exception.class).isThrownBy(() -> {
+        assertThatExceptionOfType(InputDnaChainException.class).isThrownBy(() -> {
             dnaInputValidator.VerifyDnaChainIsValid(DnaChainWithNonAllowedChars);
-        }).withMessage("Dna Chain cannot be process because the string is not well formed");
+        });
 
     }
 

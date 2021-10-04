@@ -1,6 +1,7 @@
 package com.meli.pruebatecnica.mutantdna.utils;
 
 import com.meli.pruebatecnica.mutantdna.entity.DnaVo;
+import com.meli.pruebatecnica.mutantdna.exception.InputDnaChainException;
 import com.meli.pruebatecnica.mutantdna.service.DnaChainValidator;
 import org.springframework.stereotype.Service;
 import java.util.regex.Pattern;
@@ -21,7 +22,7 @@ public class DnaValidator implements DnaChainValidator {
                 dnaIDKey.append(String.format("%s-",dnaToken));
                 dnaMatrix[i] = dnaToken.toCharArray();
             } else {
-                throw new Exception("Dna Chain cannot be process because the string is not well formed");
+                throw new InputDnaChainException();
             }
         }
         dnaVo.setDnaChain(dnaMatrix);
