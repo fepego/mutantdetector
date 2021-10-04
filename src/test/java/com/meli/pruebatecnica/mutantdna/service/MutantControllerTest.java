@@ -34,7 +34,7 @@ public class MutantControllerTest {
     final String ValidBodyMockParameter = "{\"dna\": [\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"TCACTG\"]}";
     @Test
     public void WhenCallingMutantServiceWithValidDnaChainThenReturnHttpOk() throws Exception {
-        
+
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/mutant")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)

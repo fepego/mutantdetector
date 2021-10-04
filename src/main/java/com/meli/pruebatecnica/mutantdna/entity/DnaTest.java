@@ -1,18 +1,47 @@
 package com.meli.pruebatecnica.mutantdna.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
-@Table(name="dna_analysis")
-public class DnaTest {
+public class DnaTest implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Long id;
 
-    @Column(name="dna_chain")
-    private String dnaChain;
+    @Column
+    @NotNull
+    private String dnaKey;
 
+    @Column
+    @NotNull
+    private boolean ismutant;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDnaKey() {
+        return dnaKey;
+    }
+
+    public void setDnaKey(String dnaKey) {
+        this.dnaKey = dnaKey;
+    }
+
+    public boolean isIsmutant() {
+        return ismutant;
+    }
+
+    public void setIsmutant(boolean ismutant) {
+        this.ismutant = ismutant;
+    }
 
 }
