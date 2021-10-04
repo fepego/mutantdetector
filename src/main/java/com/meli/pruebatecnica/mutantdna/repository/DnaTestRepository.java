@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface DnaTestRepository extends JpaRepository<DnaTest,Long> {
     @Query(value = "SELECT * FROM dna_test WHERE dna_key = ?1", nativeQuery = true)
     DnaTest findByDnaKey(String dnaKey);
+    @Query(value="SELECT COUNT(*) FROM dna_test WHERE ismutant =?1", nativeQuery = true)
+    int GetDnaResultsCount(boolean isMutant);
 }
