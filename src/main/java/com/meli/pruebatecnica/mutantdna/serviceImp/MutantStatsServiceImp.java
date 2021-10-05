@@ -21,7 +21,7 @@ public class MutantStatsServiceImp implements MutantStatsService {
             int mutantCount = mutantRegistryPersistenceService.GetDnaResultsCount(true);
             statsJson.put("count_mutant_dna", nonmutantCount);
             statsJson.put("count_human_dna", mutantCount);
-            statsJson.put("ratio", GetRatioMutant(nonmutantCount, mutantCount));
+            statsJson.put("ratio", (double)GetRatioMutant(nonmutantCount, mutantCount));
 
             return statsJson;
         } catch (Exception ex) {

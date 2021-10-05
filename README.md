@@ -2,13 +2,13 @@
 Prueba Tecnica Mercadolibre
 
 ## Installation
-Application can be executed from the jar as a standalone application. No server installation is necessary.
-### Dependencies
+La aplicación puede ser ejecutada desde el jar (es una aplicación standAlone con su servidor incluido) no es necesario instalar un contendor de servlet aparte.
+### Dependencias
 * Docker
 * Java version 11 
 * postgres SQL 
 * Maven
-### DB Installation
+### Instalación base de datos 
 
 Postgres can be installed from docker image please use the follow commands for install a fresh instance of postgres
 <br><code>docker pull postgres</code>
@@ -30,9 +30,10 @@ Second, perform a cd navigation to the source code and then execute the next com
 After the end of this command proceed to the target folder in the source code and execute de jar 
 <br><code>java -jar mutantdna-0.0.1-SNAPSHOT.jar</code>
 
-Enjoy Testing :) 
+NOTA: esto es para modo desarrollo
+Happy Testing :) 
 
-## List of services
+## Servicios Disponibles
 
 *Path*: /mutant
 
@@ -55,10 +56,10 @@ Enjoy Testing :)
 , “count_human_dna”:Integer number of non mutant chain: “ratio”:0.4}</code>
 
 
-## Algoritmo de Detección de Mutantes
+## Algorítmo Detección de Mutantes
 
 El problema presentado tiene un alto grado de complejidad computacional debido a que es una matriz de dos dimensiones. 
-Teniendo en cuenta este escenario, se diseño un algoritmo que evalua la matriz en 3 aspectos:
+Teniendo en cuenta este escenario, se diseño un algoritmo donde se divide el escenario de ejecución en diferentes partes para reducir el tiempo de ejecución en cada solicitud que evalua la matriz en 3 aspectos:
 * Validaciones horizontales
 * Validaciones verticales o por columnas
 * Validaciones diagonales e inversas 
@@ -91,3 +92,23 @@ al ser el mas costoso (en términos de recursos y tiempo de ejecución) se reali
 
 ![alt text](https://github.com/fepego/mutantdetector/blob/main/Screen%20Shot%202021-10-04%20at%208.53.42%20PM.png?raw=true)
 
+La imagen muestra el proceso de validación realizado para las diagonales, amarillo paso 1, verde paso 2 y naranja paso 3. Es importante resaltar que este proceso se hace de izquierda a derecha hasta la mitad de la matriz y de derecha a izquerda
+hasta la mitad.
+
+Si se encuentran mas de un match en alguno de los pasos termina el procesamiento y retorna que es un DNA mutante.
+
+### Detecciones Previas
+Se tiene en cuenta que los request realizados al sistema pueden contener cadenas previamente identificadas por lo que antes de efectuar el 
+analisis descrito en la sección anterior se busca la cadena a evaluar en la base de datos, reduciendo tiempos de respuesta.
+
+## Proceso de Desarrollo
+
+### Covertura en pruebas 
+Se agrego la dependencia Jacoco al proyecto para tener visibilidad de la covertura de las pruebas en el codigo realizado. Las pruebas incluyen levantar el contexto para verificar que las dependencias no han sido modificadas o que no afecten el flujo a la fecha de la aplicación.
+
+A continuación este es el resultado final.
+
+### Integración Continua 
+Se agrego un workflow en github para ejecutar las pruebas en cada commit y hacer pruebas de integración con la persistencia
+puede ver el resultado en este link.
+<code> https://github.com/fepego/mutantdetector/actions </code> 

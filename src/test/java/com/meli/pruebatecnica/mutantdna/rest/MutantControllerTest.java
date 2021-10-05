@@ -68,4 +68,14 @@ public class MutantControllerTest {
         mockMvc.perform(mockRequest)
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    public void WhenCallingStatServiceThenReturnOk() throws Exception {
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.get("/stats")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON);
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isOk());
+    }
 }
