@@ -107,6 +107,8 @@ analisis descrito en la sección anterior se busca la cadena a evaluar en la bas
 Se agrego la dependencia Jacoco al proyecto para tener visibilidad de la covertura de las pruebas en el codigo realizado. Las pruebas incluyen levantar el contexto para verificar que las dependencias no han sido modificadas o que no afecten el flujo a la fecha de la aplicación.
 
 A continuación este es el resultado final.
+  ![alt text](https://github.com/fepego/mutantdetector/blob/main/Screen%20Shot%202021-10-04%20at%209.30.48%20PM.png?raw=true)
+  
 
 ### Integración Continua 
 Se agrego un workflow en github para ejecutar las pruebas en cada commit y hacer pruebas de integración con la persistencia
