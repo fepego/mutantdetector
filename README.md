@@ -89,5 +89,5 @@ al ser el mas costoso (en términos de recursos y tiempo de ejecución) se reali
 2. Validación por diagonales de columnas: iniciando las subcadenas desde el primer elemento de la primera fila de la matriz
 3. Validación por diagonales de filas: iniciando subcadenas desde la primera y ultima columna de matriz 
 
-
+![alt text](https://github.com/fepego/mutantdetector/blob/main/Screen%20Shot%202021-10-04%20at%208.53.42%20PM.png?raw=true)
 
