@@ -30,6 +30,7 @@ public class MutantStatsServiceImp implements MutantStatsService {
     }
 
     float GetRatioMutant(int nonmutant, int mutantcount) {
+        if(nonmutant == 0 || mutantcount == 0 ) return 0;
         return Float.valueOf((float) mutantcount) / ((float) nonmutant);
     }
 }

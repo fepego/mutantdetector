@@ -49,7 +49,6 @@ public class MutantControllerTest {
                 .andExpect(status().isOk());
     }
     @Test
-    @DisabledOnOs({OS.LINUX})
     public void WhenCallingMutantServiceWithNonValidChainThenReturnForbidden() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/mutant")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -61,7 +60,6 @@ public class MutantControllerTest {
     }
 
     @Test
-    @DisabledOnOs({OS.LINUX})
     public void WhenCallingMutantServiceWithEmptyBodyThenReturnBadRequest() throws Exception {
        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/mutant")
                 .contentType(MediaType.APPLICATION_JSON)
