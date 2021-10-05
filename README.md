@@ -112,3 +112,8 @@ A continuación este es el resultado final.
 Se agrego un workflow en github para ejecutar las pruebas en cada commit y hacer pruebas de integración con la persistencia
 puede ver el resultado en este link.
 <code> https://github.com/fepego/mutantdetector/actions </code> 
+
+## URL Servicios Expuestos 
+Se hizo un despliegue de la aplicación en Amazon AWS puede consultar los servicios en el siguiente link
+<code>52.14.12.221:8080/mutant</code><br>
+<code>52.14.12.221:8080/stats</code>
